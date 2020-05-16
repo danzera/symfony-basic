@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // may include when using generateUrl()
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 // need to extend AbstractController to use Twig templating
 class LuckyController extends AbstractController {
@@ -20,6 +21,13 @@ class LuckyController extends AbstractController {
 		// 3rd generates different types of URLs, default is ABSOLUTE_PATH if the param is omitted
 		$shapePage = $this->generateUrl('shape_square', ['side' => 11], UrlGeneratorInterface::ABSOLUTE_PATH);
 		echo $shapePage;
+
+		// use try/catch in the event that a URL may or may not exist
+		try {
+			$url = $this->generateUrl('some_route_that_does_not_exist', []);
+		} catch (RouteNotFoundException $e) {
+			error_log('the route is not defined...');
+		}
 
 		// returning HTML without using templating
 		// return new Response(
