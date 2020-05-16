@@ -14,7 +14,8 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
-        "symfony/debug-pack": "^1.0"
+        "symfony/debug-pack": "^1.0",
+        "symfony/phpunit-bridge": "^5.0"
     },
     "config": {
         "preferred-install": {
