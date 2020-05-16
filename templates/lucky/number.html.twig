@@ -1,2 +1,10 @@
 {# lucky number template #}
 <h1>Your lucky number is {{ number }}</h1>
+
+<a href={{ path('shape_square', {side: 5}) }}>What's the area of a square sides equal to 5 you wonder?</a>
+
+<script>
+		// referencing a route with JavaScript from within a template
+    const route = "{{ path('shape_square',{side: 10})|escape('js') }}";
+		console.log('route', route);
+</script>
