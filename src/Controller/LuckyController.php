@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+// include this for Twig templating
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 // need to extend AbstractController to use Twig templating
