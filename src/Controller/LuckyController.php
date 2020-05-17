@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+// logger service built into Symfony
+use Psr\Log\LoggerInterface;
 
 use Symfony\Component\HttpFoundation\Response;
 // include this for Twig templating
@@ -12,8 +14,10 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
 // need to extend AbstractController to use Twig templating
 class LuckyController extends AbstractController {
 	// generate a random integer in the range 0-100
-	public function number() {
+	public function number(LoggerInterface $logger) {
 		$number = random_int(0, 100);
+
+		$logger->info('Random number generated.');
 
 		// can use this function to dynamically generate the URL of a route
 		// 2nd and 3rd params are optional
